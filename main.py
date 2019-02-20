@@ -1,6 +1,6 @@
 import requests
 
-ID = 'c9c38233.5c630b8d.1254d45a-0-0'
+ID = '7faae2f7.5c6d5ef7.175a1be3-0-0'
 URL = 'https://translate.yandex.net/api/v1/tr.json/translate'
 
 def translate_it(file, save, to_lang, from_lang):
@@ -15,6 +15,9 @@ def translate_it(file, save, to_lang, from_lang):
             'lang': f'{from_lang}-{to_lang}'
         }
 
+        if to_lang == '':
+          to_lang = 'ru'
+
         response = requests.get(URL, params=params)
         json_ = response.json()
 
@@ -23,4 +26,4 @@ def translate_it(file, save, to_lang, from_lang):
         
         return 'saved'
   
-print(translate_it('ES.txt', 'ES-R.txt', 'ru', 'es'))
+print(translate_it('ES.txt', 'ES-R.txt', '', 'es'))
